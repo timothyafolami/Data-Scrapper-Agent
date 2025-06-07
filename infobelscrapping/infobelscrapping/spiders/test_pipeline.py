@@ -1,0 +1,69 @@
+import scrapy
+from infobelscrapping.items import DatoscifscrappingItem
+
+
+class TestPipelineSpider(scrapy.Spider):
+    name = 'test_pipeline'
+    
+    def start_requests(self):
+        # Generate test requests (no actual HTTP calls)
+        yield scrapy.Request('http://example.com', self.parse, dont_filter=True)
+    
+    def parse(self, response):
+        # Create test data to validate pipeline
+        test_companies = [
+            {
+                'company_name': '  TECH SOLUTIONS BARCELONA SL  ',
+                'start_date': '01/06/2025',
+                'social_capital': '3.000,00 Euros',
+                'coordinates': '41.40139535552083,2.197441270878622',
+                'address': '  Calle Gran Vía 25,   08013 Barcelona  ',
+                'postal_code': '08013',
+                'municipality': 'Barcelona',
+                'province': 'Barcelona',
+                'business_purpose': 'Otras actividades de consultoría de gestión empresarial',
+                'url': 'https://www.datoscif.es/empresa/tech-solutions-barcelona-sl'
+            },
+            {
+                'company_name': 'MADRID CONSULTING GROUP SL',
+                'start_date': '02/06/2025',
+                'social_capital': '6.000,00 Euros',
+                'coordinates': '40.4168,-3.7038',
+                'address': 'Plaza Mayor 10',
+                'postal_code': '28012',
+                'municipality': 'Madrid',
+                'province': 'Madrid',
+                'business_purpose': 'Actividades de consultoría de gestión empresarial',
+                'url': 'https://www.datoscif.es/empresa/madrid-consulting-group-sl'
+            },
+            {
+                'company_name': 'VALENCIA INNOVATIONS SL',
+                'start_date': '03/06/2025',
+                'social_capital': '9.000,00 Euros',
+                'coordinates': '39.4699,-0.3763',
+                'address': 'Avenida de la Paz 15',
+                'postal_code': '46004',
+                'municipality': 'Valencia',
+                'province': 'Valencia',
+                'business_purpose': 'Servicios técnicos de ingeniería',
+                'url': 'https://www.datoscif.es/empresa/valencia-innovations-sl'
+            },
+            {
+                'company_name': 'MADRID CONSULTING GROUP SL',  # Duplicate
+                'start_date': '02/06/2025',
+                'social_capital': '6.000,00 Euros',
+                'coordinates': '40.4168,-3.7038',
+                'address': 'Plaza Mayor 10',
+                'postal_code': '28012',
+                'municipality': 'Madrid',
+                'province': 'Madrid',
+                'business_purpose': 'Actividades de consultoría de gestión empresarial',
+                'url': 'https://www.datoscif.es/empresa/madrid-consulting-group-sl'
+            }
+        ]
+        
+        for company_data in test_companies:
+            item = DatoscifscrappingItem()
+            for key, value in company_data.items():
+                item[key] = value
+            yield item

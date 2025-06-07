@@ -1,0 +1,2 @@
+I am working on cscrapping company informations from this site: @https://www.infobel.com/es/spain/business/10000/alimentacion_hosteleria 
+It is focused on different categories of businesses but i want to start with this one. I am using scrappy to work on this. 

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scrapy shell:*)",
+      "Bash(python:*)",
+      "Bash(scrapy crawl:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:www.datoscif.es)",
+      "Bash(rm:*)",
+      "Bash(grep:*)",
+      "Bash(jq:*)"
+    ],
+    "deny": []
+  }
+}

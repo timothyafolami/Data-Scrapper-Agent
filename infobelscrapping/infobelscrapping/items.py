@@ -6,7 +6,14 @@
 import scrapy
 
 
-class InfobelscrappingItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class DatoscifscrappingItem(scrapy.Item):
+    company_name = scrapy.Field()
+    start_date = scrapy.Field()
+    social_capital = scrapy.Field()
+    coordinates = scrapy.Field()
+    address = scrapy.Field()
+    postal_code = scrapy.Field()
+    municipality = scrapy.Field()
+    province = scrapy.Field()
+    business_purpose = scrapy.Field()
+    url = scrapy.Field()
